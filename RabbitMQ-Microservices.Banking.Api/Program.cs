@@ -1,9 +1,27 @@
+using FluentAssertions.Common;
+using Microsoft.EntityFrameworkCore;
+using RabbitMQ_Microservices.Infrastructure.IoC;
+using RabbitMQ_MicroServices.Banking.Application.Interfaces;
+using RabbitMQ_MicroServices.Banking.Data.Context;
+using System;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddMvc();
+
+builder.Services.AddDbContext<BankingDbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//------------------------------------------------------------------------------------------------------------------------
+
+var services = new ServiceCollection();// Create a service collection
+DependencyContainer.RegisterServices(services);// Register your services using the DependencyContainer
+
+//----------------------------------------------------------------------------------------------------------------------
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

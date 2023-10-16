@@ -102,7 +102,7 @@ namespace RabbitMQ_MicroServices.Infrastructure.Bus
             {
                 await ProcessEvent(eventName, message).ConfigureAwait(false);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;
