@@ -1,5 +1,7 @@
 using FluentAssertions.Common;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ_Microservices.Infrastructure.IoC;
 using RabbitMQ_MicroServices.Banking.Application.Interfaces;
 using RabbitMQ_MicroServices.Banking.Data.Context;
@@ -16,10 +18,11 @@ builder.Services.AddMvc();
 builder.Services.AddDbContext<BankingDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 //------------------------------------------------------------------------------------------------------------------------
-//builder.Services.AddMediatR(typeof(Startup));
-var services = new ServiceCollection();// Create a service collection
-DependencyContainer.RegisterServices(services);// Register your services using the DependencyContainer
-
+//builder.Services.AddMediatR(typeof(Program).Assembly);
+//var services = new ServiceCollection();// Create a service collection
+//DependencyContainer.RegisterServices(services);// Register your services using the DependencyContainer
+                                              
+//var serviceProvider = services.BuildServiceProvider(); // Build the service provider
 //----------------------------------------------------------------------------------------------------------------------
 
 builder.Services.AddEndpointsApiExplorer();
@@ -47,3 +50,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
