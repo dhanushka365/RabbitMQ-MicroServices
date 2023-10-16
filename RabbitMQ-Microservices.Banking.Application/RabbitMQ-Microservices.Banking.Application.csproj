@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>RabbitMQ_Microservices.Banking.Application</RootNamespace>
+    <RootNamespace>RabbitMQ_MicroServices.Banking.Application</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>

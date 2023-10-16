@@ -2,9 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>RabbitMQ_Microservices.Banking.Domain</RootNamespace>
+    <RootNamespace>RabbitMQ_MicroServices.Banking.Domain</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Commands\" />
+    <Folder Include="CommandHandlers\" />
+  </ItemGroup>
 
 </Project>

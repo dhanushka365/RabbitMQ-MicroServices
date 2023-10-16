@@ -34,13 +34,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{74EE0407-D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{649D7E0A-E3B7-4A22-B389-187FA4E10656}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ-Microservices.Banking.Api", "RabbitMQ-Microservices.Banking.Api\RabbitMQ-Microservices.Banking.Api.csproj", "{895BA975-9487-4768-9DA1-0D53CD999489}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ-MicroServices.Banking.Api", "RabbitMQ-Microservices.Banking.Api\RabbitMQ-MicroServices.Banking.Api.csproj", "{895BA975-9487-4768-9DA1-0D53CD999489}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ-Microservices.Banking.Application", "RabbitMQ-Microservices.Banking.Application\RabbitMQ-Microservices.Banking.Application.csproj", "{7C897B68-5113-4582-910A-A256AB7FD50A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ-MicroServices.Banking.Application", "RabbitMQ-Microservices.Banking.Application\RabbitMQ-MicroServices.Banking.Application.csproj", "{7C897B68-5113-4582-910A-A256AB7FD50A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ-Microservices.Banking.Data", "RabbitMQ-Microservices.Banking.Data\RabbitMQ-Microservices.Banking.Data.csproj", "{99245DEC-A4D2-47A9-9F89-67622B2A9988}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ-MicroServices.Banking.Data", "RabbitMQ-Microservices.Banking.Data\RabbitMQ-MicroServices.Banking.Data.csproj", "{99245DEC-A4D2-47A9-9F89-67622B2A9988}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ-Microservices.Banking.Domain", "RabbitMQ-Microservices.Banking.Domain\RabbitMQ-Microservices.Banking.Domain.csproj", "{E189114E-D161-475F-8F25-A1423D5DD1A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ-MicroServices.Banking.Domain", "RabbitMQ-Microservices.Banking.Domain\RabbitMQ-MicroServices.Banking.Domain.csproj", "{E189114E-D161-475F-8F25-A1423D5DD1A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
