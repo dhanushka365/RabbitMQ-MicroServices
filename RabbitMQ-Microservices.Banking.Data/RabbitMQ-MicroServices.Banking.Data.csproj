@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RabbitMQ-Microservices.Banking.Domain\RabbitMQ-MicroServices.Banking.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
