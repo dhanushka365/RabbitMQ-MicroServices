@@ -16,14 +16,17 @@ builder.Services.AddMvc();
 builder.Services.AddDbContext<BankingDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 //------------------------------------------------------------------------------------------------------------------------
-
+//builder.Services.AddMediatR(typeof(Startup));
 var services = new ServiceCollection();// Create a service collection
 DependencyContainer.RegisterServices(services);// Register your services using the DependencyContainer
 
 //----------------------------------------------------------------------------------------------------------------------
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c=>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Banking Microservice", Version = "v1" });
+});
 
 var app = builder.Build();
 
@@ -31,7 +34,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI( c=>
+    {
+      c.SwaggerEndpoint("/swagger/v1/swagger.json", "Banking Microservice v1");
+    });
 }
 
 app.UseHttpsRedirection();
