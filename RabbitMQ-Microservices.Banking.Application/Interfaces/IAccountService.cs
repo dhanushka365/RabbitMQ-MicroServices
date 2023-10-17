@@ -1,4 +1,5 @@
-﻿using RabbitMQ_MicroServices.Banking.Domain.Models;
+﻿using RabbitMQ_MicroServices.Banking.Application.Models;
+using RabbitMQ_MicroServices.Banking.Domain.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,5 +12,7 @@ namespace RabbitMQ_MicroServices.Banking.Application.Interfaces
     public interface IAccountService
     {
         IEnumerable<Account> GetAccounts();
+
+        void Transfer(AccountTransfer accountTransfer);
     }
 }
