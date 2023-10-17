@@ -10,6 +10,12 @@ using RabbitMQ_MicroServices.Banking.Domain.Events;
 using RabbitMQ_MicroServices.Banking.Domain.Interfaces;
 using RabbitMQ_MicroServices.Domain.Core.Bus;
 using RabbitMQ_MicroServices.Infrastructure.Bus;
+using RabbitMQ_MicroServices.Transfer.Application.Interfaces;
+using RabbitMQ_MicroServices.Transfer.Application.Services;
+using RabbitMQ_MicroServices.Transfer.Data.Context;
+using RabbitMQ_MicroServices.Transfer.Data.Repository;
+using RabbitMQ_MicroServices.Transfer.Domain.EventHandlers;
+using RabbitMQ_MicroServices.Transfer.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,14 +30,20 @@ namespace RabbitMQ_Microservices.Infrastructure.IoC
         {
             //Domain Bus
             services.AddTransient<IEventBus, RabbitMQBus>();
-
+            //Subscriptions
+            services.AddTransient<TransferEventHandler>();
             //Domain Events
+            services.AddTransient<IEventHandler<TransferCreatedEvent>, TransferEventHandler>();
+            //Domain Banking Commands
             services.AddTransient<IRequestHandler<CreateTransferCommand, bool>,TransferCommandHandler>();
             //Application Services
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<ITransferService, TransferService>();
             //Data
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<ITransferRepository, TransferRepository>();
             services.AddTransient<BankingDbContext>();
+            services.AddTransient<TransferDbContext>();
         }
     }
 }

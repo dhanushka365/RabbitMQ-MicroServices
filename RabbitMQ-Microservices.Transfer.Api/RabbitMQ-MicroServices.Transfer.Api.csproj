@@ -19,7 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\RabbitMQ-Microservice.Transfer.Application\RabbitMQ-MicroServices.Transfer.Application.csproj" />
+    <ProjectReference Include="..\RabbitMQ-Microservices.Infrastructure.IoC\RabbitMQ-MicroServices.Infrastructure.IoC.csproj" />
+    <ProjectReference Include="..\RabbitMQ-MicroServices.Transfer.Data\RabbitMQ-MicroServices.Transfer.Data.csproj" />
+    <ProjectReference Include="..\RabbitMQ-MicroServices.Transfer.Domain\RabbitMQ-MicroServices.Transfer.Domain.csproj" />
   </ItemGroup>
 
 </Project>

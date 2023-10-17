@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Models\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\RabbitMQ-MicroServices.Transfer.Domain\RabbitMQ-MicroServices.Transfer.Domain.csproj" />
   </ItemGroup>
 
 </Project>
