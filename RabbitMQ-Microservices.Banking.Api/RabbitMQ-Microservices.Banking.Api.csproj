@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RabbitMQ-Microservices.Banking.Data\RabbitMQ-MicroServices.Banking.Data.csproj" />
-    <ProjectReference Include="..\RabbitMQ-Microservices.Infrastructure.IoC\RabbitMQ-Microservices.Infrastructure.IoC.csproj" />
+    <ProjectReference Include="..\RabbitMQ-Microservices.Infrastructure.IoC\RabbitMQ-MicroServices.Infrastructure.IoC.csproj" />
   </ItemGroup>
 
 </Project>

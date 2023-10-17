@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>RabbitMQ_Microservices.Infrastructure.IoC</RootNamespace>
+    <RootNamespace>RabbitMQ_MicroServices.Infrastructure.IoC</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -12,9 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RabbitMQ-Microservices.Banking.Application\RabbitMQ-MicroServices.Banking.Application.csproj" />
-    <ProjectReference Include="..\RabbitMQ-Microservices.Banking.Data\RabbitMQ-MicroServices.Banking.Data.csproj" />
-    <ProjectReference Include="..\RabbitMQ-Microservices.Banking.Domain\RabbitMQ-MicroServices.Banking.Domain.csproj" />
+    <ProjectReference Include="..\RabbitMQ-MicroServices.Banking.Application\RabbitMQ-MicroServices.Banking.Application.csproj" />
+    <ProjectReference Include="..\RabbitMQ-MicroServices.Banking.Data\RabbitMQ-MicroServices.Banking.Data.csproj" />
+    <ProjectReference Include="..\RabbitMQ-MicroServices.Banking.Domain\RabbitMQ-MicroServices.Banking.Domain.csproj" />
     <ProjectReference Include="..\RabbitMQ-MicroServices.Domain.Core\RabbitMQ-MicroServices.Domain.Core.csproj" />
     <ProjectReference Include="..\RabbitMQ-MicroServices.Infrastructure.Bus\RabbitMQ-MicroServices.Infrastructure.Bus.csproj" />
   </ItemGroup>
