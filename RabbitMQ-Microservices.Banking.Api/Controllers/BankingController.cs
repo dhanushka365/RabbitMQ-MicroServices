@@ -13,7 +13,7 @@ namespace RabbitMQ_MicroServices.Banking.Api.Controllers
 
         public BankingController(IAccountService accountService)
         {
-            this._accountService = accountService;
+            _accountService = accountService;
         }
 
         [HttpGet]
