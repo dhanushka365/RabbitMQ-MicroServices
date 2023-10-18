@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ_MicroServices.Domain.Core.Bus;
@@ -17,11 +18,13 @@ namespace RabbitMQ_MicroServices.Infrastructure.Bus
         private readonly IMediator _mediator;
         private readonly Dictionary<string, List<Type>> _handlers;
         private readonly List<Type> _eventTypes;
-        public RabbitMQBus(IMediator mediator)
+        private readonly IServiceScopeFactory _serviceScopeFactory;
+        public RabbitMQBus(IMediator mediator, IServiceScopeFactory serviceScopeFactory)
         {
             _mediator = mediator;
             _handlers = new Dictionary<string, List<Type>>();
             _eventTypes = new List<Type>();
+            _serviceScopeFactory = serviceScopeFactory;
         }
 
 
@@ -114,24 +117,28 @@ namespace RabbitMQ_MicroServices.Infrastructure.Bus
         {
             if(_handlers.ContainsKey(eventName))
             {
-                var subscriptions = _handlers[eventName];
-                foreach (var subscription in subscriptions)
+                using (var scope = _serviceScopeFactory.CreateScope())
                 {
-                    var handler = Activator.CreateInstance(subscription);
-                    if(handler == null)
+                    var subscriptions = _handlers[eventName];
+                    foreach (var subscription in subscriptions)
                     {
-                        continue;
-                    }
-                    var eventType = _eventTypes.SingleOrDefault(t => t.Name == eventName);
-                    var @event = Newtonsoft.Json.JsonConvert.DeserializeObject(message, eventType);
-                    var concreteType = typeof(IEventHandler<>).MakeGenericType(eventType);
+                        //var handler = Activator.CreateInstance(subscription);
+                        var handler = scope.ServiceProvider.GetService(subscription);
+                        if (handler == null)
+                        {
+                            continue;
+                        }
+                        var eventType = _eventTypes.SingleOrDefault(t => t.Name == eventName);
+                        var @event = Newtonsoft.Json.JsonConvert.DeserializeObject(message, eventType);
+                        var concreteType = typeof(IEventHandler<>).MakeGenericType(eventType);
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
 #pragma warning disable CS8601 // Possible null reference assignment.
-                    await (Task)concreteType.GetMethod("Handle").Invoke(handler, new object[] { @event });//invoke handle method
+                        await (Task)concreteType.GetMethod("Handle").Invoke(handler, new object[] { @event });//invoke handle method
 #pragma warning restore CS8601 // Possible null reference assignment.
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                    }
                 }
             }
         }
