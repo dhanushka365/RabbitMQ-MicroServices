@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RabbitMQ_MicroServices.Transfer.Data.Context;
 
@@ -10,9 +11,11 @@ using RabbitMQ_MicroServices.Transfer.Data.Context;
 namespace RabbitMQ_MicroServices.Transfer.Data.Migrations
 {
     [DbContext(typeof(TransferDbContext))]
-    partial class TransferDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231018015613_Initial Migration New")]
+    partial class InitialMigrationNew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

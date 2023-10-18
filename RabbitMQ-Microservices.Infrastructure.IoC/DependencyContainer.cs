@@ -6,7 +6,6 @@ using RabbitMQ_MicroServices.Banking.Data.Context;
 using RabbitMQ_MicroServices.Banking.Data.Repository;
 using RabbitMQ_MicroServices.Banking.Domain.CommandHandlers;
 using RabbitMQ_MicroServices.Banking.Domain.Commands;
-using RabbitMQ_MicroServices.Banking.Domain.Events;
 using RabbitMQ_MicroServices.Banking.Domain.Interfaces;
 using RabbitMQ_MicroServices.Domain.Core.Bus;
 using RabbitMQ_MicroServices.Infrastructure.Bus;
@@ -15,12 +14,8 @@ using RabbitMQ_MicroServices.Transfer.Application.Services;
 using RabbitMQ_MicroServices.Transfer.Data.Context;
 using RabbitMQ_MicroServices.Transfer.Data.Repository;
 using RabbitMQ_MicroServices.Transfer.Domain.EventHandlers;
+using RabbitMQ_MicroServices.Transfer.Domain.Events;
 using RabbitMQ_MicroServices.Transfer.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RabbitMQ_Microservices.Infrastructure.IoC
 {
@@ -29,7 +24,7 @@ namespace RabbitMQ_Microservices.Infrastructure.IoC
         public static void RegisterServices(IServiceCollection services)
         {
             //Domain Bus
-            services.AddTransient<IEventBus, RabbitMQBus>();
+            services.AddSingleton<IEventBus, RabbitMQBus>();
             //Subscriptions
             services.AddTransient<TransferEventHandler>();
             //Domain Events

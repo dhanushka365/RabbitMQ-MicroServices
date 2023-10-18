@@ -1,7 +1,10 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using RabbitMQ_Microservices.Infrastructure.IoC;
+using RabbitMQ_MicroServices.Domain.Core.Bus;
 using RabbitMQ_MicroServices.Transfer.Data.Context;
+using RabbitMQ_MicroServices.Transfer.Domain.EventHandlers;
+using RabbitMQ_MicroServices.Transfer.Domain.Events;
 
 namespace RabbitMQ_MicroServices.Transfer.Api
 {
@@ -61,7 +64,7 @@ namespace RabbitMQ_MicroServices.Transfer.Api
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Banking Microservice V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Transfer Microservice V1");
             });
 
             app.UseRouting(); // Add this line for Endpoint Routing
@@ -70,6 +73,13 @@ namespace RabbitMQ_MicroServices.Transfer.Api
             {
                 endpoints.MapControllers(); // This replaces UseMvc for routing
             });
+
+            ConfigureEventBus(app);
+        }
+        private void ConfigureEventBus(IApplicationBuilder app)
+        {
+            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+            eventBus.Subscribe<TransferCreatedEvent, TransferEventHandler>();
         }
     }
 }

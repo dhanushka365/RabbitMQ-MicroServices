@@ -13,7 +13,6 @@ namespace RabbitMQ_MicroServices.Transfer.Domain.EventHandlers
     public class TransferEventHandler : IEventHandler<TransferCreatedEvent>
     {
         private readonly ITransferRepository _transferRepository;
-
         public TransferEventHandler(ITransferRepository transferRepository)
         {
             _transferRepository = transferRepository;
@@ -24,12 +23,13 @@ namespace RabbitMQ_MicroServices.Transfer.Domain.EventHandlers
             //add transfer log to database
             _transferRepository.Add(new TransferLog()
             {
-                FromAccount = @event.FromAccount,
-                ToAccount = @event.ToAccount,
+                AccountFrom = @event.AccountFrom,
+                AccountTo = @event.AccountTo,
                 TransferAmount = @event.TransferAmount
             });
-
+          
             return Task.CompletedTask;
+          
         }
     }
 }

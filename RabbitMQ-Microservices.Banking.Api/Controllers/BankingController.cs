@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RabbitMQ_MicroServices.Banking.Application.Interfaces;
 using RabbitMQ_MicroServices.Banking.Application.Models;
 using RabbitMQ_MicroServices.Banking.Domain.Models;
+using System.Net;
 
 namespace RabbitMQ_MicroServices.Banking.Api.Controllers
 {
@@ -24,6 +25,8 @@ namespace RabbitMQ_MicroServices.Banking.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.Created)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public IActionResult Post([FromBody] AccountTransfer accountTransfer)
         {
             _accountService.Transfer(accountTransfer);

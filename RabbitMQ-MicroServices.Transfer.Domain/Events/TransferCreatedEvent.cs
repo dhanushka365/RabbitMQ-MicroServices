@@ -1,4 +1,5 @@
-﻿using RabbitMQ_MicroServices.Domain.Core.Events;
+﻿
+using RabbitMQ_MicroServices.Domain.Core.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,14 @@ namespace RabbitMQ_MicroServices.Transfer.Domain.Events
 {
     public class TransferCreatedEvent:Event
     {
-        public int FromAccount { get; protected set; }
-        public int ToAccount { get; protected set; }
+        public int AccountFrom { get; protected set; }
+        public int AccountTo { get; protected set; }
         public decimal TransferAmount { get; protected set; }
 
-        public TransferCreatedEvent(int fromAccount, int toAccount, decimal transferAmount)
+        public TransferCreatedEvent(int accountFrom, int accountTo, decimal transferAmount)
         {
-            FromAccount = fromAccount;
-            ToAccount = toAccount;
+            AccountFrom = accountFrom;
+            AccountTo = accountTo;
             TransferAmount = transferAmount;
         }
     }
